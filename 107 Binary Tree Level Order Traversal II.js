@@ -8,7 +8,7 @@ function TreeNode(val) {
 }
 
 
-ar levelElements = function (arr, queue) {
+var levelElements = function (arr, queue) {
 	if (queue.length === 0) {
 		return;
 	}
