@@ -11,8 +11,8 @@ Count the number of prime numbers less than a non-negative number n.
 var countPrimes = function (n) {
 	let count = 0;
 	let dict = [];
-	for (let i = 2; i < Math.sqrt(n); i++) {
-		for (let j = 2; j * i < n; j++) {
+	for (let i = 2; i <= Math.sqrt(n); i++) {
+		for (let j = 2; j * i <= n; j++) {
 			dict[i * j] = false;
 		}
 	}
