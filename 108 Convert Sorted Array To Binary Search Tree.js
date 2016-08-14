@@ -17,7 +17,6 @@ var helper = function (nums, begin, end) {
 	} else {
 		return null;
 	}
-	return null;
 }
 
 var sortedArrayToBST = function (nums) {
