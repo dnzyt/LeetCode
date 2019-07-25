@@ -8,41 +8,38 @@ function ListNode(val) {
 }
 
 var mergeTwoLists = function (l1, l2) {
-	if (!l1) {
-		return l2;
-	}
-	if (!l2) {
-		return l1;
-	}
+	var dummy = new ListNode(0)
 
-	let head = l1;
-	if (l1.val > l2.val) {
-		head = l2;
-		l2 = l2.next;
-	} else {
-		l1 = l1.next;
-	}
-	let current = head;
+	var tail = dummy;
+
 	while (l1 && l2) {
 		if (l1.val < l2.val) {
-			current.next = l1;
-			current = l1;
-			l1 = l1.next;
+			tail.next = l1
+			l1 = l1.next
 		} else {
-			current.next = l2;
-			current = l2;
-			l2 = l2.next;
+			tail.next = l2
+			l2 = l2.next
 		}
+		tail = tail.next
 	}
 
-	if (l1) {
-		current.next = l1;
-	}
+	if (l1) tail.next = l1
+	if (l2) tail.next = l2
 
-	if (l2) {
-		current.next = l2;
-	}
+	return dummy.next
 
-	return head;
+}
+
+var mergeTwoLists2 = function (l1, l2) {
+
+	if (!l1 || !l2) return l1 ? l1 : l2
+
+	if (l1.val < l2.val) {
+		l1.next = mergeTwoLists2(l1.next, l2)
+		return l1
+	} else {
+		l2.next = mergeTwoLists2(l1, l2.next)
+		return l2
+	}
 
 }
